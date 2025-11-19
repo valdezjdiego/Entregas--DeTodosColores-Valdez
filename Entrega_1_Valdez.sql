@@ -12,13 +12,6 @@ CONSTRAINT fk_producto_tipo
         FOREIGN KEY (id_tipo_producto) REFERENCES tipo_producto(id_tipo_producto)
 );
 
-
-create table tipo_producto (
-id_tipo_producto int primary key not null,
-tipo varchar(20) not null,
-descripcion varchar (30)
-);
-
 create table tipo_cliente (
 id_tipo_cliente int primary key not null,
 desc_cliente varchar(20) not null
@@ -36,6 +29,27 @@ email varchar (30),
         FOREIGN KEY (id_tipo_cliente) REFERENCES tipo_cliente(id_tipo_cliente)
 );
 
+create table proveedor (
+id_proveedor int primary key not null,
+nombre varchar(20) not null,
+razon_social varchar (20),
+documento varchar (20),
+direccion varchar (20),
+telefono varchar (20),
+email varchar (20)
+);
+
+create table ciudad (
+id_ciudad int primary key not null,
+nombre_ciudad varchar (30),
+departamento varchar (30)
+);
+
+create table insumos (
+id_insumo int primary key not null,
+desc_insumo varchar (30)
+);
+
 create table pedido_compra (
 id_pedido_compra int primary key not null,
 fecha date NOT NULL,
@@ -51,7 +65,6 @@ CONSTRAINT fk_compra_proveedor
         FOREIGN KEY (id_insumo) REFERENCES insumos(id_insumo)
 );
 
-
 create table detalle_compra (
 id_pedido_compra int primary key not null,
 id_producto int not null,
@@ -62,18 +75,6 @@ precio decimal (10,2),
     CONSTRAINT fk_det_compra_producto
         FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
-
-
-create table proveedor (
-id_proveedor int primary key not null,
-nombre varchar(20) not null,
-razon_social varchar (20),
-documento varchar (20),
-direccion varchar (20),
-telefono varchar (20),
-email varchar (20)
-);
-
 
 create table pedido_venta (
 id_pedido_venta int primary key not null,
@@ -86,7 +87,6 @@ CONSTRAINT fk_venta_cliente
         FOREIGN KEY (id_ciudad) REFERENCES ciudad(id_ciudad)
 );
 
-
 create table detalle_venta (
 id_pedido_venta int not null,
 id_producto int not null,
@@ -98,19 +98,6 @@ precio_venta decimal (10,2),
     CONSTRAINT fk_det_venta_producto
         FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
-
-
-create table ciudad (
-id_ciudad int primary key not null,
-nombre_ciudad varchar (30),
-departamento varchar (30)
-);
-
-create table insumos (
-id_insumo int primary key not null,
-desc_insumo varchar (30)
-);
-
 
 
 -- relleno de tablas

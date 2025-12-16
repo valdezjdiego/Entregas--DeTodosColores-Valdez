@@ -1,7 +1,6 @@
 create schema proyecto_Valdez;
 USE proyecto_Valdez;
 
-
 -- creacion de tablas
 CREATE TABLE tipo_producto (
     id_tipo_producto INT PRIMARY KEY NOT NULL,

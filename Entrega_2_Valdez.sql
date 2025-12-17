@@ -203,9 +203,9 @@ INSERT INTO detalle_venta VALUES
 (7,14,6,480);
 
 -- validacion tablas
-select*from producto
-select*from ciudad
-select*from proveedor
+select*from producto;
+select*from ciudad;
+select*from proveedor;
 
 
 -- creacion de VISTAS
@@ -349,11 +349,11 @@ VALUES
 
 INSERT INTO pedido_venta (id_pedido_venta, fecha, id_cliente, id_ciudad)
 VALUES
-(6, '2025-03-01', 1, 1),
-(7, '2025-03-02', 2, 6),
-(8, '2025-03-03', 3, 1),
-(9, '2025-03-05', 4, 5),
-(10,'2025-03-06', 5, 1);
+(8, '2025-03-01', 1, 1),
+(9, '2025-03-02', 2, 6),
+(10, '2025-03-03', 3, 1),
+(11, '2025-03-05', 4, 5),
+(12,'2025-03-06', 5, 1);
 
 INSERT INTO detalle_venta (id_pedido_venta, id_producto, cant_venta, precio_venta)
 VALUES
@@ -374,9 +374,9 @@ SELECT * FROM vw_productos_detalle;
 SELECT * FROM vw_detalle_ventas;
 
 -- prueba de funciones
-SELECT fn_total_venta2(6) AS total_venta_pedido_6;
+SELECT fn_total_venta(6) AS total_venta_pedido_6;
 
-SELECT fn_precio_promedio2() AS precio_promedio;
+SELECT fn_precio_promedio() AS precio_promedio;
 
 -- Stored procedure
 CALL sp_ventas_por_cliente(1);
@@ -384,5 +384,3 @@ CALL sp_ventas_por_cliente(1);
 -- Prueba de trigger (deberia fallar el insert porque precio es menor a 0)
 INSERT INTO producto (nombre_producto, id_tipo_producto, descripcion_producto, precio_producto, personalizado)
 VALUES ('Producto prueba', 1, 'Error de precio', -50, 'NO');
-
-
